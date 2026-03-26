@@ -88,14 +88,14 @@ function ChampionCard({ champion }: { champion: Champion }) {
       </div>
       
       <a 
-        href={champion.videoUrl}
+        href={`https://www.youtube.com/results?search_query=${encodeURIComponent(champion.name + ' 公式チャンネル')}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full flex items-center justify-center gap-2 bg-accent text-slate-900 font-bold py-3 px-4 rounded-lg hover:bg-accent-hover transition-colors shadow-md hover:shadow-accent/30"
+        className="w-full flex items-center justify-center gap-2 bg-[#ff0000]/10 text-[#ff0000] border border-[#ff0000]/30 font-bold py-3 px-4 rounded-lg hover:bg-[#ff0000]/20 transition-colors shadow-md hover:shadow-[#ff0000]/30"
       >
-        <Tv className="w-5 h-5" />
-        あの伝説のネタをフル視聴 (VOD)
-        <ExternalLink className="w-4 h-4 ml-auto opacity-70" />
+        <Tv className="w-5 h-5 flex-shrink-0" />
+        YouTubeチャンネルを見る
+        <ExternalLink className="w-4 h-4 ml-auto opacity-70 flex-shrink-0" />
       </a>
     </div>
   );

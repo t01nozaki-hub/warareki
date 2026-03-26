@@ -81,15 +81,15 @@ export default function R1DatabasePage() {
                 </td>
                 <td className="p-4 align-top min-w-[280px]">
                   <div className="flex flex-col gap-2">
-                    <span className="text-xs text-accent font-bold mb-1">🔥 今すぐこの年の決勝戦をフル視聴する</span>
+                    <span className="text-xs text-slate-400 font-bold mb-1 flex items-center gap-1">▶️ 出場者のYouTubeを探す</span>
                     <a 
-                      href={champ.videoUrl}
+                      href={`https://www.youtube.com/results?search_query=${encodeURIComponent(champ.name + ' 公式チャンネル')}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 bg-accent text-slate-900 font-bold py-3 px-4 rounded-xl hover:bg-accent-hover transition-all hover:scale-105 shadow-md hover:shadow-accent/40 text-sm whitespace-nowrap"
+                      className="inline-flex items-center justify-center gap-2 bg-[#ff0000]/10 text-[#ff0000] border border-[#ff0000]/30 font-bold py-3 px-4 rounded-xl hover:bg-[#ff0000]/20 transition-all hover:scale-105 shadow-md hover:shadow-[#ff0000]/20 text-sm whitespace-nowrap"
                     >
                       <Tv className="w-5 h-5 flex-shrink-0" />
-                      詳細を見る / 視聴する
+                      YouTubeチャンネルを見る
                       <ExternalLink className="w-4 h-4 ml-1 opacity-70 flex-shrink-0" />
                     </a>
                   </div>
@@ -136,7 +136,7 @@ export default function R1DatabasePage() {
 
       <div className="mt-16 text-center p-6 bg-accent/5 border border-accent/20 rounded-xl">
         <p className="text-slate-300 text-sm">
-          ※ 配信サービス(VOD)の配信状況は変更される場合があります。リンク先(U-NEXT, Lemino, Netflix等)で最新情報をご確認ください。
+          ※ YouTubeの検索結果や出場者の公式チャンネルの有無は時期により変動する場合があります。
         </p>
       </div>
     </div>
