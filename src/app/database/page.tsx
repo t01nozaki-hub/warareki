@@ -13,10 +13,6 @@ export default function DatabasePage() {
           <Trophy className="h-10 w-10 text-accent" />
           歴代王者データベース
         </h1>
-        <p className="text-slate-400 max-w-2xl mx-auto md:mx-0 text-lg leading-relaxed">
-          M-1グランプリ、キングオブコント、R-1グランプリの歴代王者を振り返ります。
-          それぞれの時代の空気を作った伝説のネタを、動画配信サービス(VOD)でぜひもう一度チェックしましょう。
-        </p>
       </div>
 
       {/* 大会別一覧 */}
