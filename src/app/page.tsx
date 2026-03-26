@@ -53,9 +53,9 @@ export default function Home() {
           />
           <FeatureCard 
             title="全ファイナリスト名鑑"
-            desc="あと一歩で王者を逃した猛者たち。各年の決勝進出者の現在の活動状況やSNSへのリンク、関連グッズを網羅。"
+            desc="あと一歩で王者を逃した猛者たち。激戦の舞台で強烈なインパクトを残した伝説のファイナリストたちをご紹介します。"
             icon={<Users className="w-10 h-10 text-accent" />}
-            href="/database"
+            href="/finalists"
           />
           <FeatureCard 
             title="伝説のネタ フル視聴"
