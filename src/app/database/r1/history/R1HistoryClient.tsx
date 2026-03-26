@@ -24,13 +24,10 @@ export default function R1HistoryClient() {
           <span className="text-foreground">年度別 完全データ ({currentYear}年)</span>
         </div>
         
-        <h1 className="text-3xl md:text-5xl font-extrabold mb-4 flex items-center gap-3">
+        <h1 className="text-3xl md:text-5xl font-extrabold flex items-center gap-3">
           <Trophy className="h-8 w-8 md:h-10 md:w-10 text-accent" />
           R-1グランプリ 年度別完全データ
         </h1>
-        <p className="text-slate-400 max-w-3xl leading-relaxed">
-          第1回（2002年）から最新大会までの参加組数、審査員一覧、そして一人芸の頂点を目指した全ファイナリストの詳細を一覧できます。
-        </p>
       </div>
 
       <div className="bg-card border border-border p-4 rounded-xl shadow-lg mb-10 overflow-x-auto">
