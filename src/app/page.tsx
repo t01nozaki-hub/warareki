@@ -55,6 +55,30 @@ export default function Home() {
           />
         </div>
       </section>
+
+      {/* 新設：歴代完全データベース コールトゥアクション */}
+      <section className="container mx-auto px-4 pb-32 z-10 w-full max-w-7xl">
+        <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight drop-shadow-sm">
+          大会別 歴代完全データ
+        </h2>
+        <p className="text-center text-slate-400 mb-10 max-w-2xl mx-auto text-lg leading-relaxed">
+          第1回大会から最新大会まで、全出場者の得点、順位、プロフィールを年代別に網羅した究極のデータベースです。
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Link href="/database/m1/history" className="bg-card border-2 border-border hover:border-accent/80 hover:-translate-y-2 p-8 rounded-2xl flex flex-col items-center justify-center gap-4 group transition-all text-center shadow-lg hover:shadow-accent/20">
+            <Trophy className="w-10 h-10 text-slate-500 group-hover:text-accent transition-colors drop-shadow-sm" />
+            <span className="font-extrabold text-2xl tracking-tight">M-1グランプリ<br/><span className="text-sm font-bold text-slate-400 block mt-2 tracking-widest bg-background/50 py-1 px-4 rounded-full border border-border/50">2001 - 2025</span></span>
+          </Link>
+          <Link href="/database/koc/history" className="bg-card border-2 border-border hover:border-accent/80 hover:-translate-y-2 p-8 rounded-2xl flex flex-col items-center justify-center gap-4 group transition-all text-center shadow-lg hover:shadow-accent/20">
+            <Trophy className="w-10 h-10 text-slate-500 group-hover:text-accent transition-colors drop-shadow-sm" />
+            <span className="font-extrabold text-2xl tracking-tight">キングオブコント<br/><span className="text-sm font-bold text-slate-400 block mt-2 tracking-widest bg-background/50 py-1 px-4 rounded-full border border-border/50">2008 - 2025</span></span>
+          </Link>
+          <Link href="/database/r1/history" className="bg-card border-2 border-border hover:border-accent/80 hover:-translate-y-2 p-8 rounded-2xl flex flex-col items-center justify-center gap-4 group transition-all text-center shadow-lg hover:shadow-accent/20">
+            <Trophy className="w-10 h-10 text-slate-500 group-hover:text-accent transition-colors drop-shadow-sm" />
+            <span className="font-extrabold text-2xl tracking-tight">R-1グランプリ<br/><span className="text-sm font-bold text-slate-400 block mt-2 tracking-widest bg-background/50 py-1 px-4 rounded-full border border-border/50">2002 - 2025</span></span>
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
