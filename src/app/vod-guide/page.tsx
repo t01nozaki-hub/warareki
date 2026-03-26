@@ -46,16 +46,7 @@ export default function VodGuidePage() {
           bgColor="from-blue-900/40 to-card"
           accentColor="text-blue-400"
         />
-      </div>
-
-      <div className="mt-16 bg-accent/10 border border-accent/20 rounded-2xl p-8 text-center">
-        <h2 className="text-2xl font-bold mb-4 text-accent">アフィリエイトご協力のお願い</h2>
-        <p className="text-slate-300">
-          当サイトのデータベースから気になるネタを見つけたら、ぜひ上記のリンクから各VODサービスへご登録ください（アフィリエイトプログラムに参加しています）。<br />
-          皆様の視聴がサイト運営の力になります！
-        </p>
-      </div>
-    </div>
+      </div>    </div>
   );
 }
 
