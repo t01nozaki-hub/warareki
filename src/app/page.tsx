@@ -27,14 +27,10 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl z-10">
-          <Link href="/database" className="w-full sm:w-1/2 group relative px-8 py-5 rounded-2xl bg-gradient-to-br from-accent to-yellow-600 text-slate-900 font-black text-xl hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(251,191,36,0.3)] hover:shadow-[0_0_60px_rgba(251,191,36,0.5)] flex items-center justify-center gap-3 overflow-hidden">
+          <Link href="/database" className="w-full sm:w-2/3 md:w-1/2 group relative px-8 py-5 rounded-2xl bg-gradient-to-br from-accent to-yellow-600 text-slate-900 font-black text-xl hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(251,191,36,0.3)] hover:shadow-[0_0_60px_rgba(251,191,36,0.5)] flex items-center justify-center gap-3 overflow-hidden">
             <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out skew-x-12" />
             <Trophy className="w-6 h-6" />
             歴代のデータベースへ
-          </Link>
-          <Link href="/vod-guide" className="w-full sm:w-1/2 group px-8 py-5 rounded-2xl bg-card border-2 border-border hover:border-accent/80 text-foreground font-bold text-xl hover:scale-105 transition-all duration-300 shadow-xl flex items-center justify-center gap-3">
-            <Tv className="w-6 h-6 text-accent group-hover:scale-110 transition-transform" />
-            VODで伝説を見る
           </Link>
         </div>
       </section>
@@ -44,7 +40,7 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-extrabold mb-20 text-center tracking-tight">
           収録コンテンツ
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           <FeatureCard 
             title="歴代王者データベース"
             desc="M-1、KOC、R-1の全て。優勝ネタ、得点、キャッチコピーなど、王者に輝いた瞬間をデータで振り返ります。"
@@ -56,12 +52,6 @@ export default function Home() {
             desc="あと一歩で王者を逃した猛者たち。激戦の舞台で強烈なインパクトを残した伝説のファイナリストたちをご紹介します。"
             icon={<Users className="w-10 h-10 text-accent" />}
             href="/finalists"
-          />
-          <FeatureCard 
-            title="伝説のネタ フル視聴"
-            desc="コーンフレーク、鳥人、メガトンパンチマンカフェ。お笑いの歴史を変えたあの爆笑を、もう一度フルで見るためのVODガイド。"
-            icon={<Tv className="w-10 h-10 text-accent" />}
-            href="/legendary-neta"
           />
         </div>
       </section>
