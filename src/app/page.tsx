@@ -15,9 +15,9 @@ export default function Home() {
           M-1 / KOC / R-1 COMPLETE DATABASE
         </div>
         
-        <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter mb-8 leading-[1.0] drop-shadow-2xl">
-          笑いの歴史が、<br/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-accent via-yellow-400 to-amber-700">
+        <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-[6rem] xl:text-[7rem] font-black tracking-tighter mb-8 leading-[1.1] drop-shadow-2xl flex flex-col items-center gap-2 md:gap-4">
+          <span className="block whitespace-nowrap">笑いの歴史が、</span>
+          <span className="block whitespace-nowrap text-transparent bg-clip-text bg-gradient-to-b from-accent via-yellow-400 to-amber-700">
             ここに刻まれる。
           </span>
         </h1>
