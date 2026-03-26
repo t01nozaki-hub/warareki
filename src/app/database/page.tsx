@@ -1,5 +1,4 @@
 import { championsData, Champion } from "@/data/champions";
-import { ChampionChart } from "@/components/charts/ChampionChart";
 import { ExternalLink, Trophy, Tv, Info } from "lucide-react";
 
 export default function DatabasePage() {
@@ -19,15 +18,6 @@ export default function DatabasePage() {
           それぞれの時代の空気を作った伝説のネタを、動画配信サービス(VOD)でぜひもう一度チェックしましょう。
         </p>
       </div>
-
-      {/* インフォグラフィック セクション */}
-      <section className="mb-20">
-        <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-          <Info className="h-6 w-6 text-accent" />
-          データで見る歴代王者（インフォグラフィック）
-        </h2>
-        <ChampionChart data={championsData} />
-      </section>
 
       {/* 大会別一覧 */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10">
