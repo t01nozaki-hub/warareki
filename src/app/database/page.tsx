@@ -1,5 +1,5 @@
 import { championsData, Champion } from "@/data/champions";
-import { ExternalLink, Trophy, Tv, Info } from "lucide-react";
+import { ExternalLink, Trophy, Tv } from "lucide-react";
 
 export default function DatabasePage() {
   const m1 = championsData.filter(c => c.tournament === "M-1").sort((a,b) => b.year - a.year);
