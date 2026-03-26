@@ -34,6 +34,13 @@ export default function M1DatabasePage() {
         <p className="text-slate-400 max-w-3xl text-lg leading-relaxed mb-6">
           「笑ってはいけない」緊張感の中で生み出された数々のドラマ。各年の優勝ネタやキャッチコピーとともに、あの興奮を何度でも。
         </p>
+        
+        <div className="mb-4">
+          <Link href="/database/m1/history" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-amber-500 text-slate-900 font-extrabold py-4 px-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]">
+            <Trophy className="w-6 h-6" />
+            2001年〜2025年 歴代完全データベースを見る
+          </Link>
+        </div>
       </div>
 
       <div className="overflow-x-auto bg-card rounded-2xl border border-border shadow-xl mb-24">
