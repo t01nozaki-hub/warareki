@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { championsData, type Champion } from '@/data/champions';
-import { finalistsData, type Finalist } from '@/data/finalists';
 import { Trophy, Tv, ExternalLink, Users } from 'lucide-react';
 import Link from 'next/link';
 import ScoreTable from '@/components/features/ScoreTable';
@@ -14,10 +13,6 @@ export default function KocDatabasePage() {
   const kocChampions = championsData
     .filter((c: Champion) => c.tournament === 'KOC')
     .sort((a: Champion, b: Champion) => a.year - b.year);
-    
-  const kocFinalists = finalistsData
-    .filter((f: Finalist) => f.tournament === 'KOC')
-    .sort((a: Finalist, b: Finalist) => b.year - a.year);
 
   return (
     <div className="container mx-auto px-4 py-12 max-w-6xl">
@@ -98,38 +93,6 @@ export default function KocDatabasePage() {
             ))}
           </tbody>
         </table>
-      </div>
-      
-      <div className="mb-12 border-t-2 border-accent pt-12">
-        <h2 className="text-3xl md:text-4xl font-extrabold mb-4 flex items-center gap-3">
-          <Users className="h-8 w-8 text-accent" />
-          キングオブコント 歴代ファイナリスト名鑑
-        </h2>
-        <p className="text-slate-400 max-w-3xl text-lg leading-relaxed mb-10">
-          惜しくも優勝を逃したものの、強烈な記憶を焼き付けたコント師たちの軌跡。
-        </p>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {kocFinalists.map((f: Finalist) => (
-            <div key={f.id} className="bg-card border border-border p-6 rounded-2xl hover:border-accent/50 transition-colors shadow-lg relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-[80px] -z-10 group-hover:scale-125 transition-transform" />
-              
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <span className="text-xs font-bold text-slate-800 bg-accent px-2 py-1 rounded inline-block mb-2">
-                    {f.year}年 決勝 第{f.rank}位
-                  </span>
-                  <h3 className="text-2xl font-bold">{f.name}</h3>
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <span className="text-xs text-slate-500 font-bold tracking-wide uppercase block mb-1">現在の活動状況</span>
-                <p className="text-slate-300 text-sm leading-relaxed">{f.currentActivity}</p>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
 
       <ScoreTable tournament="KOC" />

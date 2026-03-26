@@ -40,18 +40,12 @@ export default function Home() {
         <h2 className="text-4xl md:text-5xl font-extrabold mb-20 text-center tracking-tight">
           収録コンテンツ
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-8 max-w-lg mx-auto">
           <FeatureCard 
             title="歴代王者データベース"
             desc="M-1、KOC、R-1の全て。優勝ネタ、得点、キャッチコピーなど、王者に輝いた瞬間をデータで振り返ります。"
             icon={<Trophy className="w-10 h-10 text-accent" />}
             href="/database"
-          />
-          <FeatureCard 
-            title="全ファイナリスト名鑑"
-            desc="あと一歩で王者を逃した猛者たち。激戦の舞台で強烈なインパクトを残した伝説のファイナリストたちをご紹介します。"
-            icon={<Users className="w-10 h-10 text-accent" />}
-            href="/finalists"
           />
         </div>
       </section>
