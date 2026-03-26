@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { championsData, type Champion } from '@/data/champions';
-import { Trophy, Tv, ExternalLink, Users } from 'lucide-react';
+import { Trophy, Tv, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import ScoreTable from '@/components/features/ScoreTable';
 

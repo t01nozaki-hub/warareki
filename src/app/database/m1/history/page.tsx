@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { m1HistoryData } from '@/data/m1/history';
-import { Trophy, Users, Star, Crown, MessageCircle, Info } from 'lucide-react';
+import { Trophy, Users, Star, Crown, Info } from 'lucide-react';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
