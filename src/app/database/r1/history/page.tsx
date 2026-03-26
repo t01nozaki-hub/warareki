@@ -91,46 +91,60 @@ export default async function R1HistoryPage({
             決勝進出者 最終順位・プロフィール
           </h3>
           
-          {yearData.results.map((res) => (
-            <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
-              res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
-              res.rank === 2 ? 'bg-slate-300/10 border-slate-300/30' :
-              res.rank === 3 ? 'bg-amber-700/10 border-amber-700/30' :
-              'bg-card border-border hover:border-accent/40'
-            }`}>
-              
-              <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
-                <span className={`text-3xl font-black italic ${
-                  res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
-                  res.rank === 2 ? 'text-slate-300' :
-                  res.rank === 3 ? 'text-amber-700' :
-                  'text-slate-500'
-                }`}>
-                  {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
-                </span>
-                {res.totalScore && (
-                  <span className="text-xs font-bold text-accent mt-1 bg-accent/10 px-2 py-0.5 rounded text-center leading-tight">
-                    {res.totalScore}
-                  </span>
-                )}
-              </div>
+          {yearData.results.map((res) => {
+            const appearances = r1HistoryData
+              .filter(d => d.year <= currentYear)
+              .flatMap(d => d.results)
+              .filter(r => r.name === res.name).length;
 
-              <div className="flex-grow">
-                <div className="flex items-center gap-2 mb-2">
-                  <h4 className="text-xl sm:text-2xl font-bold">{res.name}</h4>
-                  {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
+            return (
+              <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
+                res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
+                res.rank === 2 ? 'bg-slate-300/10 border-slate-300/30' :
+                res.rank === 3 ? 'bg-amber-700/10 border-amber-700/30' :
+                'bg-card border-border hover:border-accent/40'
+              }`}>
+                
+                <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
+                  <span className={`text-3xl font-black italic ${
+                    res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
+                    res.rank === 2 ? 'text-slate-300' :
+                    res.rank === 3 ? 'text-amber-700' :
+                    'text-slate-500'
+                  }`}>
+                    {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
+                  </span>
                 </div>
-                <p className="text-slate-300 text-sm leading-relaxed mb-2">
-                  {res.profile}
-                </p>
-                {res.note && (
-                  <p className="text-xs text-slate-400 flex items-center gap-1 bg-background/50 inline-block px-2 py-1 rounded mt-1">
-                    <Info className="w-3 h-3" /> {res.note}
+
+                <div className="flex-grow">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <h4 className="text-xl sm:text-2xl font-bold">{res.name}</h4>
+                    {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
+                  </div>
+
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {res.totalScore && (
+                      <span className="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-md">
+                        得点: {res.totalScore}{typeof res.totalScore === 'number' || !isNaN(Number(res.totalScore)) ? '点' : ''}
+                      </span>
+                    )}
+                    <span className="text-xs font-bold text-slate-300 bg-slate-800 border border-slate-600 px-2.5 py-1 rounded-md">
+                      決勝出場: {appearances}回目
+                    </span>
+                  </div>
+
+                  <p className="text-slate-300 text-sm leading-relaxed mb-2">
+                    {res.profile}
                   </p>
-                )}
+                  {res.note && (
+                    <p className="text-xs text-slate-400 flex items-center gap-1 bg-background/50 inline-block px-2 py-1 rounded mt-1">
+                      <Info className="w-3 h-3" /> {res.note}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
