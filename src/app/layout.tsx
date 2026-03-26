@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://warareki.com"),
   title: "わられき（笑歴） - お笑い賞レースデータベース",
   description: "M-1グランプリ、キングオブコント、R-1グランプリの歴代王者や伝説のネタを網羅したお笑い専門ポータル",
 };
