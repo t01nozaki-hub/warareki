@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { scoresData, TournamentScores } from '@/data/scores';
+import { scoresData } from '@/data/scores';
 import { Trophy, ChevronDown } from 'lucide-react';
 
 export default function ScoreTable({ tournament }: { tournament: "M-1" | "KOC" | "R-1" }) {
