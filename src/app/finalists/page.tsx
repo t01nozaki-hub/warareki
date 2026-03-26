@@ -19,9 +19,6 @@ export default function FinalistsDirectoryPage() {
           <Users className="h-10 w-10 text-accent" />
           全ファイナリスト名鑑
         </h1>
-        <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-          あと一歩で王者を逃した猛者たち。激戦の舞台で強烈なインパクトを残し、各年を彩った伝説のファイナリストたちの現在の活動状況やSNS、関連グッズを一挙にご紹介します。
-        </p>
       </div>
 
       <FinalistSection title="M-1グランプリ 歴代ファイナリスト" finalists={m1Finalists} />
