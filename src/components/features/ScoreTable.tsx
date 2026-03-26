@@ -1,17 +1,26 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { scoresData, TournamentScores } from '@/data/scores';
 import { Trophy, ChevronDown } from 'lucide-react';
 
-export default function ScoreTable() {
-  const m1Scores = scoresData
-    .filter(s => s.tournament === 'M-1')
+export default function ScoreTable({ tournament }: { tournament: "M-1" | "KOC" | "R-1" }) {
+  const filteredScores = scoresData
+    .filter(s => s.tournament === tournament)
     .sort((a, b) => b.year - a.year);
 
-  const [selectedYear, setSelectedYear] = useState<number>(m1Scores[0]?.year || 2023);
-  const currentData = m1Scores.find(s => s.year === selectedYear);
+  const [selectedYear, setSelectedYear] = useState<number>(0);
 
+  // 初回レンダリング時、またはtournament変更時に最初の年をセット
+  useEffect(() => {
+    if (filteredScores.length > 0) {
+      setSelectedYear(filteredScores[0].year);
+    }
+  }, [tournament]);
+
+  if (filteredScores.length === 0) return null;
+
+  const currentData = filteredScores.find(s => s.year === selectedYear) || filteredScores[0];
   if (!currentData) return null;
 
   return (
@@ -32,7 +41,7 @@ export default function ScoreTable() {
             onChange={(e) => setSelectedYear(Number(e.target.value))}
             className="appearance-none bg-background border border-border text-foreground font-bold py-3 pr-12 pl-4 rounded-xl focus:outline-none focus:border-accent hover:border-accent/50 transition-colors"
           >
-            {m1Scores.map(score => (
+            {filteredScores.map(score => (
               <option key={score.id} value={score.year}>{score.year}年 大会</option>
             ))}
           </select>
@@ -46,7 +55,7 @@ export default function ScoreTable() {
           <thead>
             <tr className="bg-background/80 border-b border-border text-slate-300">
               <th className="p-4 font-bold whitespace-nowrap text-center">順位</th>
-              <th className="p-4 font-bold min-w-[150px]">コンビ名</th>
+              <th className="p-4 font-bold min-w-[150px]">コンビ／芸名</th>
               <th className="p-4 font-bold text-center text-accent">合計得点</th>
               {currentData.judges.map((judge, idx) => (
                 <th key={idx} className="p-4 font-bold text-center text-sm w-[80px]">
@@ -84,7 +93,6 @@ export default function ScoreTable() {
       <div className="md:hidden space-y-4">
         {currentData.results.map((res) => (
           <div key={res.name} className="bg-card border border-border p-5 rounded-2xl shadow-lg relative overflow-hidden">
-            {/* Background rank indicator */}
             {res.rank <= 3 && (
               <div className="absolute -top-10 -right-10 w-32 h-32 opacity-10 blur-xl rounded-full" style={{
                 backgroundColor: res.rank === 1 ? '#eab308' : res.rank === 2 ? '#cbd5e1' : '#b45309'

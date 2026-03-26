@@ -6,17 +6,17 @@ import Link from 'next/link';
 import ScoreTable from '@/components/features/ScoreTable';
 
 export const metadata: Metadata = {
-  title: 'M-1 歴代王者 一覧 | M-1 過去回 視聴方法',
-  description: 'M-1グランプリ歴代王者の優勝ネタ、当時のキャッチコピー、そして過去回のフル動画視聴方法を網羅した完全データベースです。',
+  title: 'キングオブコント(KOC) 歴代王者一覧 | 過去回 視聴方法',
+  description: 'キングオブコント歴代王者の優勝ネタ、当時のキャッチコピー、そして過去回のフル動画視聴方法を網羅した完全データベースです。',
 };
 
-export default function M1DatabasePage() {
-  const m1Champions = championsData
-    .filter((c: Champion) => c.tournament === 'M-1')
+export default function KocDatabasePage() {
+  const kocChampions = championsData
+    .filter((c: Champion) => c.tournament === 'KOC')
     .sort((a: Champion, b: Champion) => a.year - b.year);
     
-  const m1Finalists = finalistsData
-    .filter((f: Finalist) => f.tournament === 'M-1')
+  const kocFinalists = finalistsData
+    .filter((f: Finalist) => f.tournament === 'KOC')
     .sort((a: Finalist, b: Finalist) => b.year - a.year);
 
   return (
@@ -25,14 +25,14 @@ export default function M1DatabasePage() {
         <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
           <Link href="/database" className="hover:text-accent transition-colors">データベース一覧</Link>
           <span>&gt;</span>
-          <span className="text-foreground">M-1グランプリ 歴代王者 & ファイナリスト</span>
+          <span className="text-foreground">キングオブコント 歴代王者 & ファイナリスト</span>
         </div>
         <h1 className="text-4xl md:text-5xl font-extrabold mb-4 flex items-center gap-3">
           <Trophy className="h-10 w-10 text-accent" />
-          M-1グランプリ 歴代王者＆伝説の回まとめ
+          キングオブコント 歴代王者＆伝説のコントまとめ
         </h1>
         <p className="text-slate-400 max-w-3xl text-lg leading-relaxed mb-6">
-          「笑ってはいけない」緊張感の中で生み出された数々のドラマ。各年の優勝ネタやキャッチコピーとともに、あの興奮を何度でも。
+          真のコント日本一を決める戦い。劇的な逆転劇や、歴史に名を刻んだ伝説のキャラクターたちを振り返ります。
         </p>
       </div>
 
@@ -48,10 +48,10 @@ export default function M1DatabasePage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-border">
-            {m1Champions.map((champ: Champion) => (
+            {kocChampions.map((champ: Champion) => (
               <tr key={champ.id} className="hover:bg-background/40 transition-colors group">
                 <td className="p-4 align-top">
-                  <div className="font-mono text-accent font-bold">第{champ.year - 2000}回</div>
+                  <div className="font-mono text-accent font-bold">第{champ.year - 2007}回</div>
                   <div className="text-xs text-slate-400">({champ.year})</div>
                 </td>
                 <td className="p-4 align-top">
@@ -93,19 +93,17 @@ export default function M1DatabasePage() {
         </table>
       </div>
       
-      {/* 決勝出場者（ファイナリスト）名鑑セクション */}
       <div className="mb-12 border-t-2 border-accent pt-12">
         <h2 className="text-3xl md:text-4xl font-extrabold mb-4 flex items-center gap-3">
           <Users className="h-8 w-8 text-accent" />
-          M-1グランプリ 歴代ファイナリスト名鑑
+          キングオブコント 歴代ファイナリスト名鑑
         </h2>
         <p className="text-slate-400 max-w-3xl text-lg leading-relaxed mb-10">
-          王座には届かなかったものの、決勝の舞台で強烈なインパクトを残した伝説のファイナリストたち。
-          彼らのその後の活躍や、関連グッズ情報をご紹介します。
+          惜しくも優勝を逃したものの、強烈な記憶を焼き付けたコント師たちの軌跡。
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {m1Finalists.map((f: Finalist) => (
+          {kocFinalists.map((f: Finalist) => (
             <div key={f.id} className="bg-card border border-border p-6 rounded-2xl hover:border-accent/50 transition-colors shadow-lg relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-accent/5 rounded-bl-[80px] -z-10 group-hover:scale-125 transition-transform" />
               
@@ -116,56 +114,22 @@ export default function M1DatabasePage() {
                   </span>
                   <h3 className="text-2xl font-bold">{f.name}</h3>
                 </div>
-                {/* SNS Links */}
-                <div className="flex gap-2 text-slate-400">
-                  {f.snsLinks?.x && (
-                    <a href={f.snsLinks.x} target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 transition-colors bg-background p-2 rounded-full border border-border" title="X (Twitter) を見る">
-                      <MessageCircle className="w-4 h-4" />
-                    </a>
-                  )}
-                  {f.snsLinks?.youtube && (
-                    <a href={f.snsLinks.youtube} target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors bg-background p-2 rounded-full border border-border" title="YouTube を見る">
-                      <PlaySquare className="w-4 h-4" />
-                    </a>
-                  )}
-                </div>
               </div>
               
               <div className="mb-6">
                 <span className="text-xs text-slate-500 font-bold tracking-wide uppercase block mb-1">現在の活動状況</span>
                 <p className="text-slate-300 text-sm leading-relaxed">{f.currentActivity}</p>
               </div>
-              
-              {/* Affiliate Product */}
-              {f.affiliateProduct && (
-                <div className="mt-auto pt-4 border-t border-border/50">
-                  <span className="text-xs text-slate-500 font-bold tracking-wide uppercase block mb-2">関連グッズ・書籍 (PR)</span>
-                  <a 
-                    href={f.affiliateProduct.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-background border border-border hover:border-accent hover:bg-accent/5 transition-all group/link"
-                  >
-                    <div className="bg-accent text-slate-900 p-2 rounded-lg">
-                      <ShoppingCart className="w-4 h-4" />
-                    </div>
-                    <span className="font-bold text-sm text-foreground group-hover/link:text-accent transition-colors">
-                      {f.affiliateProduct.title}
-                    </span>
-                    <ExternalLink className="w-4 h-4 ml-auto text-slate-500" />
-                  </a>
-                </div>
-              )}
             </div>
           ))}
         </div>
       </div>
 
-      <ScoreTable tournament="M-1" />
+      <ScoreTable tournament="KOC" />
 
       <div className="mt-16 text-center p-6 bg-accent/5 border border-accent/20 rounded-xl">
         <p className="text-slate-300 text-sm">
-          ※ 配信サービス(VOD)の配信状況は変更される場合があります。リンク先(U-NEXT, Lemino, Amazon Prime, Netflix等)で最新情報をご確認ください。
+          ※ 配信サービス(VOD)の配信状況は変更される場合があります。リンク先(U-NEXT, Lemino, Netflix等)で最新情報をご確認ください。
         </p>
       </div>
     </div>
