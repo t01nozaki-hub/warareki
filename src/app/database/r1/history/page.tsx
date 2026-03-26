@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   description: 'R-1グランプリの2002年第1回大会から最新2025年の全参加組数、審査員、決勝進出者全員のプロフィール・得点を年別にまとめた究極のデータベースです。',
 };
 
+export const dynamic = 'force-dynamic';
+
 export default async function R1HistoryPage({
   searchParams,
 }: {
