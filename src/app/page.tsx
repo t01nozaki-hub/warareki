@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Trophy, Tv, Users, ChevronRight, Sparkles } from 'lucide-react';
+import { Trophy, Sparkles } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -26,29 +26,7 @@ export default function Home() {
           「わられき（笑歴）」は、日本最高峰の3大お笑い賞レースの歴代王者と全ファイナリスト、そして伝説のネタを網羅した究極のデータベースです。
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center w-full max-w-2xl z-10">
-          <Link href="/database" className="w-full sm:w-2/3 md:w-1/2 group relative px-8 py-5 rounded-2xl bg-gradient-to-br from-accent to-yellow-600 text-slate-900 font-black text-xl hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(251,191,36,0.3)] hover:shadow-[0_0_60px_rgba(251,191,36,0.5)] flex items-center justify-center gap-3 overflow-hidden">
-            <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out skew-x-12" />
-            <Trophy className="w-6 h-6" />
-            歴代のデータベースへ
-          </Link>
-        </div>
-      </section>
 
-      {/* メインナビゲーションカード群 */}
-      <section className="container mx-auto px-4 py-32 z-10 w-full max-w-7xl">
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-20 text-center tracking-tight">
-          収録コンテンツ
-        </h2>
-        <div className="grid grid-cols-1 gap-8 max-w-lg mx-auto">
-          <FeatureCard 
-            title="歴代王者データベース"
-            desc="M-1、KOC、R-1の全て。優勝ネタ、得点、キャッチコピーなど、王者に輝いた瞬間をデータで振り返ります。"
-            icon={<Trophy className="w-10 h-10 text-accent" />}
-            href="/database"
-          />
-        </div>
-      </section>
 
       {/* 新設：歴代完全データベース コールトゥアクション */}
       <section className="container mx-auto px-4 pb-32 z-10 w-full max-w-7xl">
@@ -77,18 +55,4 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ title, desc, icon, href }: { title: string, desc: string, icon: React.ReactNode, href: string }) {
-  return (
-    <Link href={href} className="flex flex-col p-10 rounded-3xl bg-card/60 backdrop-blur-md border border-border/50 hover:border-accent/40 transition-all duration-500 hover:-translate-y-3 group shadow-2xl hover:shadow-[0_30px_60px_rgba(251,191,36,0.15)] relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-40 h-40 bg-accent/5 rounded-bl-[100px] transition-transform duration-700 group-hover:scale-150" />
-      <div className="mb-8 p-5 bg-background/80 rounded-2xl inline-block w-fit text-accent shadow-inner border border-border/50 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 group-hover:border-accent/30">
-        {icon}
-      </div>
-      <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-tight z-10">{title}</h3>
-      <p className="text-slate-400 leading-relaxed text-lg mb-10 flex-1 z-10">{desc}</p>
-      <div className="mt-auto flex items-center text-accent font-bold text-lg group-hover:text-accent-hover transition-colors z-10">
-        詳しく見る <ChevronRight className="w-5 h-5 ml-1 group-hover:translate-x-2 transition-transform duration-300" />
-      </div>
-    </Link>
-  );
-}
+
