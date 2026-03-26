@@ -25,10 +25,7 @@ export default function Home() {
         <p className="text-xl md:text-2xl text-slate-300 mb-16 max-w-3xl font-medium leading-relaxed drop-shadow-md">
           「わられき（笑歴）」は、日本最高峰の3大お笑い賞レースの歴代王者と全ファイナリスト、そして伝説のネタを網羅した究極のデータベースです。
         </p>
-
-
-
-      {/* 新設：歴代完全データベース コールトゥアクション */}
+      </section>      {/* 新設：歴代完全データベース コールトゥアクション */}
       <section className="container mx-auto px-4 pb-32 z-10 w-full max-w-7xl">
         <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center tracking-tight drop-shadow-sm">
           大会別 歴代完全データ
