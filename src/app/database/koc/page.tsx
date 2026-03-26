@@ -32,8 +32,15 @@ export default function KocDatabasePage() {
           キングオブコント 歴代王者＆伝説のコントまとめ
         </h1>
         <p className="text-slate-400 max-w-3xl text-lg leading-relaxed mb-6">
-          真のコント日本一を決める戦い。劇的な逆転劇や、歴史に名を刻んだ伝説のキャラクターたちを振り返ります。
+          「日本一のコント師」を決める大会。小道具、音響、演技力など、漫才とは違う総合芸術としての笑いの頂点を極めた面々です。
         </p>
+
+        <div className="mb-4">
+          <Link href="/database/koc/history" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-amber-500 text-slate-900 font-extrabold py-4 px-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]">
+            <Trophy className="w-6 h-6" />
+            2008年〜2025年 歴代完全データベースを見る
+          </Link>
+        </div>
       </div>
 
       <div className="overflow-x-auto bg-card rounded-2xl border border-border shadow-xl mb-24">
