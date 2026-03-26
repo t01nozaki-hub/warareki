@@ -8,14 +8,15 @@ export const metadata: Metadata = {
   description: 'M-1グランプリの2001年第1回大会から最新2025年の全参加組数、審査員、決勝進出者全員のプロフィール・得点を年別にまとめた究極のデータベースです。',
 };
 
-export default function M1HistoryPage({
+export default async function M1HistoryPage({
   searchParams,
 }: {
-  searchParams?: { year?: string };
+  searchParams: Promise<{ year?: string }>;
 }) {
+  const resolvedParams = await searchParams;
   // 初期値は最新年(2025)
   const defaultYear = 2025;
-  const currentYear = searchParams?.year ? parseInt(searchParams.year, 10) : defaultYear;
+  const currentYear = resolvedParams?.year ? parseInt(resolvedParams.year as string, 10) : defaultYear;
   
   const yearData = m1HistoryData.find(d => d.year === currentYear) || m1HistoryData[0];
 

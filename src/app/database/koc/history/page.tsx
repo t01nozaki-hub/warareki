@@ -8,13 +8,14 @@ export const metadata: Metadata = {
   description: 'キングオブコントの2008年第1回大会から最新2025年の全参加組数、審査員、決勝進出者全員のプロフィール・得点を年別にまとめた究極のデータベースです。',
 };
 
-export default function KocHistoryPage({
+export default async function KocHistoryPage({
   searchParams,
 }: {
-  searchParams?: { year?: string };
+  searchParams: Promise<{ year?: string }>;
 }) {
+  const resolvedParams = await searchParams;
   const defaultYear = 2025;
-  const currentYear = searchParams?.year ? parseInt(searchParams.year, 10) : defaultYear;
+  const currentYear = resolvedParams?.year ? parseInt(resolvedParams.year as string, 10) : defaultYear;
   
   const yearData = kocHistoryData.find(d => d.year === currentYear) || kocHistoryData[kocHistoryData.length - 1];
 
