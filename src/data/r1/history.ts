@@ -286,5 +286,20 @@ export const r1HistoryData: R1HistoricalYear[] = [
       { rank: 8, name: "さや香 新山", totalScore: 639, profile: "M-1でも爪痕を残した漫才師がピンで登場。熱血プレゼン風の漫談。" },
       { rank: 9, name: "ヒロ・オクムラ", totalScore: 631, profile: "無名ながら決勝に食い込んだダークホース。独特の間のコント。" }
     ]
+  },
+  {
+    year: 2026, edition: 24, entryCount: 6171,
+    judges: ["陣内智則", "バカリズム", "友近", "小籔千豊", "野田クリスタル", "佐久間一行", "ハリウッドザコシショウ"],
+    results: [
+      { rank: 1, name: "今井らいぱち", totalScore: 669, profile: "ファーストステージを1位タイで通過し、最終決戦で5票を獲得して第24代王者に輝く。" },
+      { rank: 2, name: "トンツカタンお抹茶", totalScore: 669, profile: "ファーストステージで今井らいぱちと同点1位通過。最終決戦進出を果たした。" },
+      { rank: 3, name: "ドンデコルテ渡辺銀次", totalScore: 655, profile: "ファーストステージを3位通過し最終決戦に進出。" },
+      { rank: 4, name: "ルシファー吉岡", totalScore: 650, profile: "大会史上初となる8度目の決勝進出を果たしたベテランコント師。" },
+      { rank: 5, name: "真輝志", totalScore: 649, profile: "変幻自在の一人コントで2度目の決勝進出。" },
+      { rank: 6, name: "ななまがり初瀬", totalScore: 640, profile: "コンビからの単独出場で決勝の舞台へ。" },
+      { rank: 7, name: "しんや", totalScore: 635, profile: "ラグビー芸人として初の決勝進出。" },
+      { rank: 8, name: "さすらいラビー中田", totalScore: 630, profile: "長い手足を活かした独特のパフォーマンスによる一人コント。" },
+      { rank: 9, name: "九条ジョー", totalScore: 628, profile: "コウテイ解散後、ピン芸人として初の決勝進出を果たした。" }
+    ]
   }
 ];

@@ -144,5 +144,29 @@ export const r1Champions: Champion[] = [
     description: "芸歴制限撤廃の初年度、芸歴20年目のベテランが貫禄のウソ漫談で優勝。",
     catchphrase: "ファンタジー漫談",
     winningNeta: "石川啄木 / 辻斬り"
+  },
+  {
+    id: "r1-2025",
+    tournament: "R-1",
+    year: 2025,
+    name: "友田オレ",
+    ageAtWin: 23,
+    careerYears: 3,
+    videoUrl: "YOUR_VOD_LINK",
+    description: "現役早大生という新星が、過去最多5511組の頂点に。独特のワードセンスと音を連動させたパフォーマンスで第23代王者に輝く。",
+    catchphrase: "（キャッチコピーなし）",
+    winningNeta: "リズムネタ"
+  },
+  {
+    id: "r1-2026",
+    tournament: "R-1",
+    year: 2026,
+    name: "今井らいぱち",
+    ageAtWin: 38,
+    careerYears: 16,
+    videoUrl: "YOUR_VOD_LINK",
+    description: "ファーストステージを1位で通過し、最終決戦で5票を集めて第24代王者に輝いた。",
+    catchphrase: "（キャッチコピーなし）",
+    winningNeta: "一人コント"
   }
 ];
