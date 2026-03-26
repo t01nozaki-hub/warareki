@@ -1,26 +1,26 @@
 import { Newspaper, ChevronRight, Clock } from "lucide-react";
 
-const DUMMY_NEWS = [
+const LATEST_NEWS = [
   {
     id: 1,
-    title: "【速報】M-1グランプリ2024 決勝進出者9組が決定！",
-    date: "2024-12-05",
-    category: "M-1",
-    excerpt: "激戦の準決勝を勝ち抜き、見事決勝への切符を手にした9組の実力派漫才師たちが一挙公開。各コンビの過去の戦績と見どころを徹底解説します。",
+    title: "【最新・R-1】R-1グランプリ2026、今井らいぱちが悲願の優勝！",
+    date: "2026-03-22",
+    category: "R-1",
+    excerpt: "2026年3月21日に決勝戦が放送された「R-1グランプリ2026」にて、今井らいぱちが見事第24代王者に輝戴冠。過去最多6171人の激戦を勝ち抜き、ファイナルステージの「絵描き歌」ネタで栄冠を手にしました。",
   },
   {
     id: 2,
-    title: "R-1グランプリ 芸歴制限撤廃でベテラン勢の逆襲が始まる",
-    date: "2024-02-13",
-    category: "R-1",
-    excerpt: "今年から芸歴10年以内の制限が撤廃されたR-1グランプリ。ストイックにピン芸を極め続けた中堅・ベテラン芸人たちがどのような旋風を巻き起こすのか。",
+    title: "【M-1】M-1グランプリ2025王者は「たくろう」！過去最多11,521組の頂点へ",
+    date: "2025-12-22",
+    category: "M-1",
+    excerpt: "2025年12月21日に生放送されたM-1グランプリ2025決勝戦にて、たくろうが見事優勝を果たしました。エントリー数は過去最多となる11,521組を記録し、2026年2月からはスペシャルツアーも開催中です。",
   },
   {
     id: 3,
-    title: "キングオブコント2024 エントリー開始。今年は審査方法に変化？",
-    date: "2024-05-20",
+    title: "【KOC】キングオブコント2025、ロングコートダディが第18代キングに！",
+    date: "2025-10-12",
     category: "KOC",
-    excerpt: "日本一のコント師を決める戦いが今年も幕を開ける。エントリー開始と同時に発表された特別ルールや、注目の参加ユニットについて速報でお届けします。",
+    excerpt: "2025年10月11日に行われたキングオブコント2025決勝で、ロングコートダディが優勝。過去最多3449組がエントリーした今大会は、ハイレベルな激戦が繰り広げられました。",
   }
 ];
 
@@ -33,7 +33,7 @@ export default function NewsPage() {
       </h1>
       
       <div className="space-y-8">
-        {DUMMY_NEWS.map(news => (
+        {LATEST_NEWS.map(news => (
           <article key={news.id} className="bg-card border border-border rounded-2xl p-6 hover:border-accent/40 transition-colors group cursor-pointer shadow-sm hover:shadow-md">
             <div className="flex items-center gap-3 text-sm text-slate-400 mb-3">
               <span className="bg-accent/10 text-accent font-bold px-3 py-1 rounded-full border border-accent/20">
@@ -58,8 +58,8 @@ export default function NewsPage() {
       </div>
 
       <div className="mt-12 text-center p-8 bg-background border border-border border-dashed rounded-xl">
-        <p className="text-slate-400">
-          ※実際の運用では、Google Search API等を定期実行し、お笑いナタリー等の最新ニュースを自動要約して反映する仕組みを導入予定です。
+        <p className="text-slate-400 text-sm">
+          ※ ニュース情報は随時更新されます。各大会の詳細はデータベース（歴代王者一覧）からもご確認いただけます。
         </p>
       </div>
     </div>
