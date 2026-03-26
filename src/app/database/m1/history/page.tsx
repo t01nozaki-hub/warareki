@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function M1HistoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ year?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedParams = await searchParams;
   // 初期値は最新年(2025)

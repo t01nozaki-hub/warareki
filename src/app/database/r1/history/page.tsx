@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default async function R1HistoryPage({
   searchParams,
 }: {
-  searchParams: Promise<{ year?: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const resolvedParams = await searchParams;
   const defaultYear = 2025;
