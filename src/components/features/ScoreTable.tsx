@@ -71,8 +71,7 @@ export default function ScoreTable({ tournament }: { tournament: "M-1" | "KOC" |
                 <td className="p-4 text-center">
                   <span className={`inline-block w-8 h-8 leading-8 rounded-full font-bold ${
                     res.rank === 1 ? 'bg-yellow-500 text-black shadow-[0_0_10px_rgba(234,179,8,0.5)]' :
-                    res.rank === 2 ? 'bg-slate-300 text-black' :
-                    res.rank === 3 ? 'bg-amber-700 text-white' : 'bg-background border border-border'
+                    'bg-background border border-border'
                   }`}>
                     {res.rank}
                   </span>
@@ -93,18 +92,15 @@ export default function ScoreTable({ tournament }: { tournament: "M-1" | "KOC" |
       <div className="md:hidden space-y-4">
         {currentData.results.map((res) => (
           <div key={res.name} className="bg-card border border-border p-5 rounded-2xl shadow-lg relative overflow-hidden">
-            {res.rank <= 3 && (
-              <div className="absolute -top-10 -right-10 w-32 h-32 opacity-10 blur-xl rounded-full" style={{
-                backgroundColor: res.rank === 1 ? '#eab308' : res.rank === 2 ? '#cbd5e1' : '#b45309'
-              }} />
+            {res.rank === 1 && (
+              <div className="absolute -top-10 -right-10 w-32 h-32 opacity-10 blur-xl rounded-full bg-yellow-500" />
             )}
             
             <div className="flex justify-between items-center mb-4 border-b border-border pb-4">
               <div className="flex items-center gap-3">
                 <span className={`inline-block w-8 h-8 leading-8 text-center rounded-full font-bold text-sm ${
                   res.rank === 1 ? 'bg-yellow-500 text-black' :
-                  res.rank === 2 ? 'bg-slate-300 text-black' :
-                  res.rank === 3 ? 'bg-amber-700 text-white' : 'bg-background border border-border'
+                  'bg-background border border-border'
                 }`}>
                   {res.rank}
                 </span>

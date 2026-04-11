@@ -33,7 +33,7 @@ export default function R1DatabasePage() {
         <div className="mb-4">
           <Link href="/database/r1/history" className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-amber-500 text-slate-900 font-extrabold py-4 px-8 rounded-2xl hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:shadow-[0_0_30px_rgba(234,179,8,0.5)]">
             <Trophy className="w-6 h-6" />
-            2002年〜2025年 歴代完全データベースを見る
+            2002年〜2026年 歴代完全データベースを見る
           </Link>
         </div>
       </div>

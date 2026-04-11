@@ -4,11 +4,15 @@ import { useSearchParams } from 'next/navigation';
 import { r1HistoryData } from '@/data/r1/history';
 import { Trophy, Users, Star, Crown, Info } from 'lucide-react';
 import Link from 'next/link';
+import ContestantLink from '@/components/features/ContestantLink';
+import YouTubeButton from '@/components/features/YouTubeButton';
+import AdSpace from '@/components/features/AdSpace';
+import { contestantsData } from '@/data/contestants';
 
 export default function R1HistoryClient() {
   const searchParams = useSearchParams();
   const yearParam = searchParams.get('year');
-  const defaultYear = 2025;
+  const defaultYear = 2026;
   const currentYear = yearParam ? parseInt(yearParam, 10) : defaultYear;
   
   const yearData = r1HistoryData.find(d => d.year === currentYear) || r1HistoryData[r1HistoryData.length - 1];
@@ -88,30 +92,27 @@ export default function R1HistoryClient() {
               .flatMap(d => d.results)
               .filter(r => r.name === res.name).length;
 
-            return (
-              <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
-                res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
-                res.rank === 2 ? 'bg-slate-300/10 border-slate-300/30' :
-                res.rank === 3 ? 'bg-amber-700/10 border-amber-700/30' :
-                'bg-card border-border hover:border-accent/40'
-              }`}>
-                
-                <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
-                  <span className={`text-3xl font-black italic ${
-                    res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
-                    res.rank === 2 ? 'text-slate-300' :
-                    res.rank === 3 ? 'text-amber-700' :
-                    'text-slate-500'
-                  }`}>
-                    {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
-                  </span>
-                </div>
-
-                <div className="flex-grow">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h4 className="text-xl sm:text-2xl font-bold">{res.name}</h4>
-                    {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
+              return (
+                <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
+                  res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
+                  'bg-card border-border hover:border-accent/40'
+                }`}>
+                  
+                  <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
+                    <span className={`text-3xl font-black italic ${
+                      res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
+                      'text-slate-500'
+                    }`}>
+                      {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
+                    </span>
                   </div>
+
+                  <div className="flex-grow">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <ContestantLink name={res.name} className="text-xl sm:text-2xl font-bold" />
+                      <YouTubeButton name={res.name} url={contestantsData[res.name]?.youtubeUrl} size="sm" />
+                      {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
+                    </div>
 
                   <div className="flex flex-wrap gap-2 mb-3">
                     {res.totalScore && (
@@ -136,6 +137,9 @@ export default function R1HistoryClient() {
               </div>
             );
           })}
+          
+          {/* Bottom Ad Space */}
+          <AdSpace label="Advertisement" type="horizontal" className="mt-8" />
         </div>
       </div>
     </div>

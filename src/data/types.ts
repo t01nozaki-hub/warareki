@@ -37,6 +37,22 @@ export type ScoreResult = {
   note?: string; // 例: 「最終決戦 〇票」など
 };
 
+export type Contestant = {
+  name: string;
+  hometown?: string;
+  agency?: string;
+  formedDate?: string;
+  members?: {
+    name: string;
+    birthplace?: string;
+  }[];
+  youtubeUrl?: string;
+  xUrl?: string;
+  officialSite?: string;
+  image?: string;
+  description?: string;
+};
+
 export type TournamentScores = {
   id: string;
   tournament: "M-1" | "KOC" | "R-1";

@@ -3,8 +3,8 @@ import { Suspense } from 'react';
 import R1HistoryClient from './R1HistoryClient';
 
 export const metadata: Metadata = {
-  title: 'R-1グランプリ歴代完全データベース (2002-2025) | 順位・得点・参加組数',
-  description: 'R-1グランプリの2002年第1回大会から最新2025年の全参加組数、審査員、決勝進出者全員のプロフィール・得点を年別にまとめた究極のデータベースです。',
+  title: 'R-1グランプリ歴代完全データベース (2002-2026) | 順位・得点・参加組数',
+  description: 'R-1グランプリの2002年第1回大会から最新2026年の全参加組数、審査員、決勝進出者全員のプロフィール・得点を年別にまとめた究極のデータベースです。',
 };
 
 export default function R1HistoryPage() {

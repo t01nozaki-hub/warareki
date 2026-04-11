@@ -2,8 +2,12 @@
 
 import { useSearchParams } from 'next/navigation';
 import { kocHistoryData } from '@/data/koc/history';
-import { Trophy, Users, Star, Crown, Info } from 'lucide-react';
+import { Trophy, Users, Star, Crown, Info, ListChecks, Swords } from 'lucide-react';
 import Link from 'next/link';
+import ContestantLink from '@/components/features/ContestantLink';
+import YouTubeButton from '@/components/features/YouTubeButton';
+import AdSpace from '@/components/features/AdSpace';
+import { contestantsData } from '@/data/contestants';
 
 export default function KocHistoryClient() {
   const searchParams = useSearchParams();
@@ -74,55 +78,115 @@ export default function KocHistoryClient() {
               </div>
             </div>
           </div>
+          
+          {/* 大会ルールの解説 */}
+          <div className="mt-8 pt-8 border-t border-border">
+            <div className="flex items-center gap-2 text-accent font-bold mb-3">
+              <ListChecks className="w-5 h-5" />
+              大会形式・ルール
+            </div>
+            <div className="bg-background/50 p-4 rounded-xl border border-border text-xs leading-relaxed text-slate-300">
+              {yearData.rules}
+            </div>
+          </div>
         </div>
 
-        <div className="lg:col-span-2 space-y-4">
-          <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 border-b border-border pb-3">
-            <Crown className="w-6 h-6 text-yellow-500" />
-            決勝進出者 最終順位・プロフィール
-          </h3>
-          
-          {yearData.results.map((res) => {
+        <div className="lg:col-span-2 space-y-8">
+          {/* ブロック別結果（存在する場合） */}
+          {yearData.blocks && (
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold flex items-center gap-2 border-b border-border pb-3">
+                <Swords className="w-6 h-6 text-orange-500" />
+                ブロック別・1stステージ結果
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {yearData.blocks.map((block) => (
+                  <div key={block.name} className="bg-card border border-border rounded-xl overflow-hidden shadow-sm">
+                    <div className="bg-slate-800 px-4 py-2 font-bold text-sm border-b border-border flex justify-between items-center">
+                      {block.name}
+                      <span className="text-[10px] text-slate-400 font-normal">1st Stage</span>
+                    </div>
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="text-left text-[10px] text-slate-500 uppercase border-b border-border/50">
+                          <th className="px-4 py-2 font-medium">順位</th>
+                          <th className="px-2 py-2 font-medium">コンビ名</th>
+                          <th className="px-4 py-2 font-medium text-right">得点/結果</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border/30">
+                        {block.results.map((r) => (
+                          <tr key={r.name} className={`group ${r.isAdvanced ? 'bg-accent/5' : ''}`}>
+                            <td className="px-4 py-2 font-bold text-slate-400">{r.rank}</td>
+                            <td className="px-2 py-2 font-bold group-hover:text-accent transition-colors">
+                              {r.name}
+                              {r.isAdvanced && <span className="ml-1 text-[10px] text-accent">★</span>}
+                            </td>
+                            <td className={`px-4 py-2 text-right font-mono ${r.isAdvanced ? 'text-accent' : 'text-slate-400'}`}>
+                              {r.score}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div>
+            <h3 className="text-2xl font-bold mb-4 flex items-center gap-2 border-b border-border pb-3">
+              <Crown className="w-6 h-6 text-yellow-500" />
+              決勝進出者 最終順位・プロフィール
+            </h3>
+            
+            <div className="space-y-4">
+              {yearData.results.map((res) => {
             const appearances = kocHistoryData
               .filter(d => d.year <= currentYear)
               .flatMap(d => d.results)
               .filter(r => r.name === res.name).length;
 
-            return (
-              <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
-                res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
-                res.rank === 2 ? 'bg-slate-300/10 border-slate-300/30' :
-                res.rank === 3 ? 'bg-amber-700/10 border-amber-700/30' :
-                'bg-card border-border hover:border-accent/40'
-              }`}>
-                
-                <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
-                  <span className={`text-3xl font-black italic ${
-                    res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
-                    res.rank === 2 ? 'text-slate-300' :
-                    res.rank === 3 ? 'text-amber-700' :
-                    'text-slate-500'
-                  }`}>
-                    {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
-                  </span>
-                </div>
-
-                <div className="flex-grow">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h4 className="text-xl sm:text-2xl font-bold">{res.name}</h4>
-                    {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {res.totalScore && (
-                      <span className="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-md">
-                        得点: {res.totalScore}{typeof res.totalScore === 'number' || !isNaN(Number(res.totalScore)) ? '点' : ''}
-                      </span>
-                    )}
-                    <span className="text-xs font-bold text-slate-300 bg-slate-800 border border-slate-600 px-2.5 py-1 rounded-md">
-                      決勝出場: {appearances}回目
+              return (
+                <div key={res.name} className={`p-5 rounded-xl border flex flex-col sm:flex-row gap-4 relative overflow-hidden transition-colors ${
+                  res.rank === 1 ? 'bg-yellow-500/10 border-yellow-500/50' :
+                  'bg-card border-border hover:border-accent/40'
+                }`}>
+                  
+                  <div className="flex-shrink-0 flex flex-col items-center justify-center sm:w-20">
+                    <span className={`text-3xl font-black italic ${
+                      res.rank === 1 ? 'text-yellow-500 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)]' :
+                      'text-slate-500'
+                    }`}>
+                      {res.rank}<span className="text-base text-slate-400 ml-0.5">位</span>
                     </span>
                   </div>
+
+                  <div className="flex-grow">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <ContestantLink name={res.name} className="text-xl sm:text-2xl font-bold" />
+                      <YouTubeButton name={res.name} url={contestantsData[res.name]?.youtubeUrl} size="sm" />
+                      {res.rank === 1 && <span className="text-xs bg-yellow-500 text-black px-2 py-0.5 rounded-full font-bold ml-2">優勝👑</span>}
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {res.totalScore && (
+                        <div className="flex flex-col gap-1">
+                          <span className="text-xs font-bold text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-md inline-block">
+                            得点: {res.totalScore}{typeof res.totalScore === 'number' || !isNaN(Number(res.totalScore)) ? '点' : ''}
+                          </span>
+                          {res.score1 !== undefined && res.score2 !== undefined && (
+                            <span className="text-[10px] text-slate-400 font-medium ml-1">
+                              (1st: {res.score1} / Final: {res.score2})
+                            </span>
+                          )}
+                        </div>
+                      )}
+                      <span className="text-xs font-bold text-slate-300 bg-slate-800 border border-slate-600 px-2.5 py-1 rounded-md h-fit">
+                        決勝出場: {appearances}回目
+                      </span>
+                    </div>
 
                   <p className="text-slate-300 text-sm leading-relaxed mb-2">
                     {res.profile}
@@ -135,7 +199,12 @@ export default function KocHistoryClient() {
                 </div>
               </div>
             );
-          })}
+              })}
+            </div>
+          </div>
+          
+          {/* Bottom Ad Space */}
+          <AdSpace label="Advertisement" type="horizontal" className="mt-8" />
         </div>
       </div>
     </div>
